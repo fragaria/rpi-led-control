@@ -8,15 +8,18 @@ addons:
   apt:
     packages:
     - docker-ce
-  - stage: build docker
-    language: generic
-    before_install:
-    - sudo docker run --privileged linuxkit/binfmt:v0.6
-    - sudo docker run -d --privileged -p 1234:1234 --name buildkit moby/buildkit:latest
-      --addr tcp://0.0.0.0:1234 --oci-worker-platform linux/amd64 --oci-worker-platform
-      linux/armhf
-    - sudo docker cp buildkit:/usr/bin/buildctl /usr/bin/
-    - export BUILDKIT_HOST=tcp://0.0.0.0:1234
-    install: true
-    script:
-    - bash .travis/build-images.sh
+language: generic
+before_install:
+- sudo docker run --privileged linuxkit/binfmt:v0.6
+- sudo docker run -d --privileged -p 1234:1234 --name buildkit moby/buildkit:latest
+  --addr tcp://0.0.0.0:1234 --oci-worker-platform linux/amd64 --oci-worker-platform
+  linux/armhf
+- sudo docker cp buildkit:/usr/bin/buildctl /usr/bin/
+- export BUILDKIT_HOST=tcp://0.0.0.0:1234
+install: true
+script:
+- bash .travis/build-images.sh
+env:
+  global:
+  - secure: E+U0ZC3ViwHWyJBZff54i7kQmIBwqwDDeVdXU+lZDnYEI49biPI9pLDZIE/kSclSBxPSHMEnUHeGiwOf3OetujDXaga/Mk1UEFLSJZ65L3g3YnWDCmgBiBq0oSiXBRzRPn4lCdE+lahis9VGUUxWpbOSVFhJPWGZi7gPT1RN9vEuyFRFRhrC3Vd2smDFHyfrTW/jEddcNXqUdaFkvdjmF2lPE17QetVifai63ltbeA4sMlewhFX/p69Z6M8xhrTgNDcykMiUlNCZE29m43Q3nDwEIz2mg+1A1Q1mN3N7FyEAOXkIVJ5KdQY2HN1uqX5RQhuQTr568TKsRzmMy9bSzuxawIl2Emn5anPxT1spB6Ql1SN+mBj6+ikqkNywLyOGDdTye5AVNA0qaqiB4mXncrqTOiRdBW+DiH5SJ9CK+VStdLjwQLJgtbL6CsfA3WvGjP0r/gCllBuUyyPsQqPp09nXC9uVIXzoTzaEAtXlrFage3QHA9fk6D5OzjZMgQmKgcIXDrcNQd/uxErzMmBzGJVACTykVxICwhTxnM/j8m+EW0/fV30hzBj91YaNH+HZvnrc42WdKkLMMzrrFPv1M+u5OTrI/Pna+1/vXlxTPkvn4EZ90ve5uGEkLJTdYIsX/3Hz7JCHva3Sp7SuYEmfEmlnaRTQihhnb5cP9cOV0o8=
+  - secure: ahvqifKbip0SHMI8JUNU8wTXK2vXpLWjIjUaKhH839emqGOP31CP04MRxZbL3mcFTbGf6W/UICxYONCfhhyrXn2mYJCTAw6Qznt3wGXlKqCwVZPShfqDQ2w+qikNLQ+YlTMkuvpa1EV9TGFvx9yMLXQHDVMCkMR0MWW1lvStbn+dDR2v9mKamIcfdw00r7FCUDuJYcid235d7yU6aSOdDqw9FxxHY/+Dic9lqV8M2y5JIno5/X8aNlyrV4kLlu6GOs0y487eqdeWdWPZo9pNTI/21rjlFD+5GJ5ZWkkPbWyh3YsPfXKGgBY0D/qO2QRygzFKsUGbX47RyQYo8OEq6v+GDKSbR8YaUO8WqTSqEUWeOm9WI3MLjuiuq0fWBcN2Q4rixdcv/9aoWshyytyeaZJhwabodjusYhnwI9dzHKtebKAME2qwWMi55sQ5Ynm4j58mKcd4UZ0ptcMqj4WIG570CKNML2ch5h8a3AW2gfYh8q8WaNN2gjFjFN5F+OUnvfnoS1jNRCrMGgUXMs6mpMCpInmUc5LUzpI81JHtakNR3tea5trYDbY3YYMk/SCxRqhuKGynwQljI9oYEHvOQqP5/ZNKRLAsh13hHE9pQJ8oxUzK+wZ18bPzueL2wkCdiPDBusNAzjVMR3RrOwOjdhckv4L7Fi1h82sc//IgrJA=

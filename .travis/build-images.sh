@@ -4,7 +4,7 @@
 
 DIR=`dirname "$0"`
 
-echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USER" --password-stdin
+echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
 docker info
 
 # Build for armhf and push
