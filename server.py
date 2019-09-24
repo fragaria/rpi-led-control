@@ -5,10 +5,11 @@ from wsgiref.simple_server import make_server
 import time
 import json
 
+strip = apa102.APA102(num_led=2, global_brightness=20, mosi=14, sclk=15, order='rbg')
+
 class Leds(object):
     def __init__(self):
         print("led control started")
-        strip = apa102.APA102(num_led=2, global_brightness=20, mosi=14, sclk=15, order='rbg')
         strip.clear_strip()
         strip.set_pixel_rgb(0, 20000)
 
