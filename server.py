@@ -5,18 +5,12 @@ from wsgiref.simple_server import make_server
 import time
 import json
 
-print("ledky")
-strip = apa102.APA102(num_led=2, global_brightness=20, mosi=14, sclk=15, order='rbg')
-strip.clear_strip()
-strip.set_pixel_rgb(0, 20000)
-
 class Leds(object):
     def __init__(self):
-        print("ledky")
+        print("led control started")
         strip = apa102.APA102(num_led=2, global_brightness=20, mosi=14, sclk=15, order='rbg')
         strip.clear_strip()
         strip.set_pixel_rgb(0, 20000)
-
 
     def on_post(self, req, res):
         data = req.media
@@ -26,7 +20,6 @@ class Leds(object):
 
         print(data)
         return data
-
 
 app = falcon.API()
 leds = Leds()
