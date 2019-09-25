@@ -4,8 +4,8 @@ import falcon
 from driver import apa102
 
 NUM_LED = int(os.environ.get("NUM_LED", 2))
-DATA_PIN = int(os.environ.get("NUM_LED", 14))
-CLK_PIN = int(os.environ.get("NUM_LED", 15))
+DATA_PIN = int(os.environ.get("DATA_PIN", 14))
+CLK_PIN = int(os.environ.get("CLK_PIN", 15))
 START_COLOR = int(os.environ.get("START_COLOR", 16711680))
 BRIGHTNESS = int(os.environ.get("BRIGHTNESS", 31))
 
