@@ -3,7 +3,7 @@
 Dockerized REST API for LED control
 
 ```
-docker pull fragaria/rpi-led-control && docker run -d --privileged -p 5000:5000 fragaria/rpi-led-control
+docker pull fragaria/rpi-led-control && docker run -d --privileged -p 5000:5000 -e NUM_LED=2 -e START_COLOR=16711680 fragaria/rpi-led-control
 ```
 
 By sending the decimal color values via POST, you can control what colors the LEDs are.
