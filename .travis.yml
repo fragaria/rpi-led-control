@@ -9,7 +9,7 @@ addons:
     packages:
     - docker-ce
 language: generic
-if: repo IS fragaria/rpi-led-control
+if: repo = fragaria/rpi-led-control
 before_install:
 - sudo docker run --privileged linuxkit/binfmt:v0.6
 - sudo docker run -d --privileged -p 1234:1234 --name buildkit moby/buildkit:latest
