@@ -3,7 +3,7 @@ import os
 import falcon
 from driver import apa102
 
-NUM_LED = os.environ.get('NUM_LED', 2)
+NUM_LED = int(os.environ.get('NUM_LED', 2))
 START_COLOR = os.environ.get('START_COLOR', 16711680)
 
 strip = apa102.APA102(num_led=NUM_LED, global_brightness=20, mosi=14, sclk=15, order="rbg")
