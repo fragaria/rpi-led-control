@@ -9,6 +9,7 @@ FROM python:3.6-slim
 
 ENV NUM_LED 2
 ENV START_COLOR 16711680
+ENV BRIGHTNESS 31
 
 WORKDIR /usr/src/app
 COPY ./server.py server.py
