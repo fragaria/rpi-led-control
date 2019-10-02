@@ -3,13 +3,14 @@ FROM python:3.6-slim as builder
 RUN apt-get update && apt-get install -y build-essential python-dev
 RUN pip install gunicorn falcon RPi.GPIO apa102-pi
 
-RUN which gunicorn
-
 FROM python:3.6-slim
 
 ENV NUM_LED 2
 ENV START_COLOR 16711680
 ENV BRIGHTNESS 31
+
+RUN groupadd -g 1000 -r leds && useradd -u 1000 --no-log-init -r -g leds leds
+USER leds
 
 WORKDIR /usr/src/app
 COPY ./server.py server.py

@@ -10,6 +10,6 @@ docker info
 buildctl build --frontend dockerfile.v0 \
             --local dockerfile=. \
             --local context=. \
-            --output type=image,name=docker.io/fragaria/rpi-led-control:latest,push=true \
+            --output type=image,name=docker.io/fragaria/rpi-led-control:prerelease,push=true \
             --opt platform=linux/armhf \
             --opt filename=./Dockerfile
