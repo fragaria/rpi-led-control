@@ -9,7 +9,8 @@ ENV NUM_LED 2
 ENV START_COLOR 16711680
 ENV BRIGHTNESS 31
 
-RUN groupadd -g 1000 -r leds && useradd -u 1000 --no-log-init -r -g leds leds
+# 997 is the gpio group on Raspbian
+RUN groupadd -g 997 -r leds && useradd -u 1000 --no-log-init -r -g leds leds
 USER leds
 
 WORKDIR /usr/src/app
