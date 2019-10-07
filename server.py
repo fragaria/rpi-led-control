@@ -47,7 +47,6 @@ strip = Apa102(
     global_brightness=BRIGHTNESS,
     mosi=DATA_PIN,
     sclk=CLK_PIN,
-    order="rbg",
 )
 
 strip.clear_strip()
