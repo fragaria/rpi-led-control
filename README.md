@@ -15,10 +15,12 @@ docker pull fragaria/rpi-led-control && docker run -d --device /dev/gpiomem:/dev
 ```
 
 By sending the decimal color values via POST, you can control what colors the LEDs are.
-For color conversion, you can use [this tool](https://convertingcolors.com/).
 
 The LED positions are addressed from the start of the cable. Values are decimal color representation (0-16777215).
 
 ```sh
-curl -X POST -d '{"leds":[20000, 255]}' -H "Content-Type: application/json" http://10.192.202.91:5000
+curl -X POST -d '{"leds":[#ff0000, "blue"]}' -H "Content-Type: application/json" http://10.192.202.91:5000
+
+curl -X GET http://10.192.202.12:3334
+# -> {"leds": ["#ffffff", "#0000ff"]}
 ```
