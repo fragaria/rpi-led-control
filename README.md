@@ -14,7 +14,7 @@ And then run
 docker pull fragaria/rpi-led-control && docker run -d --device /dev/gpiomem:/dev/gpiomem -p 5000:5000 -e NUM_LED=2 -e START_COLOR=16711680 fragaria/rpi-led-control
 ```
 
-By sending the decimal color values via POST, you can control what colors the LEDs are.
+By sending the color values via POST, you can control what colors the LEDs are.
 
 The LED positions are addressed from the start of the cable. 
 Values are hexadecimal #rrggbb, #rgb or color name ([list of names](https://github.com/vaab/colour/blob/11f138eb7841d2045160b378a2eec0c2321144c0/colour.py#L52)).
