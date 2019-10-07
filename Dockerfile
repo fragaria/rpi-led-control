@@ -1,7 +1,8 @@
 FROM python:3.6-slim as builder
 
 RUN apt-get update && apt-get install -y build-essential python-dev
-RUN pip install gunicorn falcon RPi.GPIO apa102-pi colour
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
 FROM python:3.6-slim
 
