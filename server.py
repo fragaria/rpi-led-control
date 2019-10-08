@@ -8,7 +8,7 @@ from colour import Color
 NUM_LED = int(os.environ.get("NUM_LED", 2))
 DATA_PIN = int(os.environ.get("DATA_PIN", 14))
 CLK_PIN = int(os.environ.get("CLK_PIN", 15))
-START_COLOR = int(os.environ.get("START_COLOR", 16711680))
+START_COLOR = os.environ.get("START_COLOR", "red")
 BRIGHTNESS = int(os.environ.get("BRIGHTNESS", 31))
 
 
@@ -22,10 +22,10 @@ class Apa102(apa102.APA102):
         return c/256
 
     def set_pixel_f(self, index, r, g, b):
-        return super().set_pixel(index, self._fd(r), self._fd(g), self._fd(b))
+        return self.set_pixel_f(index, color.get_red(), color.get_green(), color.get_blue())
 
     def set_pixel_color(self, index, color):
-        return self.set_pixel_f(index, color.r, color.g, color.b)
+        return super().set_pixel(index, self._fd(r), self._fd(g), self._fd(b))
 
     def get_strip_color(self, index):
         start_index = 4 * index
@@ -50,8 +50,9 @@ strip = Apa102(
 )
 
 strip.clear_strip()
+start_color = Color(START_COLOR)
 for i in range(0, NUM_LED):
-    strip.set_pixel_rgb(i, START_COLOR)
+    strip.set_pixel_color(i, start_color)
 strip.show()
 
 class Leds(object):

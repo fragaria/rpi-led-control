@@ -20,7 +20,7 @@ The LED positions are addressed from the start of the cable.
 Values are hexadecimal #rrggbb, #rgb or color name ([list of names](https://github.com/vaab/colour/blob/11f138eb7841d2045160b378a2eec0c2321144c0/colour.py#L52)).
 
 ```sh
-curl -X POST -d '{"leds":[#ff0000, "blue"]}' -H "Content-Type: application/json" http://10.192.202.91:5000
+curl -X POST -d '{"leds":["#ff0000", "blue"]}' -H "Content-Type: application/json" http://10.192.202.91:5000
 
 curl -X GET http://10.192.202.12:5000
 # -> {"leds": ["#ffffff", "#0000ff"]}

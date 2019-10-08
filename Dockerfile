@@ -6,7 +6,7 @@ RUN pip install gunicorn falcon RPi.GPIO apa102-pi colour
 FROM python:3.6-slim
 
 ENV NUM_LED 2
-ENV START_COLOR 16711680
+ENV START_COLOR red
 ENV BRIGHTNESS 31
 
 # 997 is the gpio group on Raspbian
