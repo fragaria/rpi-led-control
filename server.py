@@ -22,10 +22,10 @@ class Apa102(apa102.APA102):
         return c/256
 
     def set_pixel_f(self, index, r, g, b):
-        return self.set_pixel_f(index, color.get_red(), color.get_green(), color.get_blue())
+        return super().set_pixel(index, self._fd(r), self._fd(g), self._fd(b))
 
     def set_pixel_color(self, index, color):
-        return super().set_pixel(index, self._fd(r), self._fd(g), self._fd(b))
+        return self.set_pixel_f(index, color.get_red(), color.get_green(), color.get_blue())
 
     def get_strip_color(self, index):
         start_index = 4 * index
