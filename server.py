@@ -15,11 +15,11 @@ BRIGHTNESS = int(os.environ.get("BRIGHTNESS", 31))
 class Apa102(apa102.APA102):
     @staticmethod
     def _fd(c):
-        return int(c * 256)
+        return int(c * 255)
 
     @staticmethod
     def _df(c):
-        return c/256
+        return c/255
 
     def set_pixel_f(self, index, r, g, b):
         return super().set_pixel(index, self._fd(r), self._fd(g), self._fd(b))
