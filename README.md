@@ -11,7 +11,7 @@ To make this work, attach a strip of two (or more) APA102 LEDs to Raspberry Pi G
 And then run
 
 ```sh
-docker pull fragaria/rpi-led-control && docker run -d --device /dev/gpiomem:/dev/gpiomem -p 5000:5000 -e NUM_LED=2 -e START_COLOR=16711680 fragaria/rpi-led-control
+docker pull fragaria/rpi-led-control && docker run -d --device /dev/gpiomem:/dev/gpiomem -p 5000:5000 -e NUM_LED=2 -e START_COLOR=red fragaria/rpi-led-control
 ```
 
 By sending the color values via POST, you can control what colors the LEDs are.
